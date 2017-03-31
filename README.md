@@ -30,9 +30,32 @@ cd Backend
 npm install
 ```
 
-### Run the Application
-Preconfigured a simple dev web server, start application using Grunt:
+### Run Server (API) Application
+Server depends on MySQL as database. Run MySQL locally using default port (3306) and create scheme using following command:
+Create tables in Database
+```
+do create database schema in Mysql in the name of sampleevolent 
+```
+```
+cd Backend
+cd server
+node create-table.js
+```
+
+
+Start server application using following commands:
+```
+cd Backend
+cd server
+node server.js
+```
+Now browse to the app at `http://localhost:9000`.
+
+### Run the Client Side Application
+start application using Grunt:
 ```
 grunt serve
 ```
-Now browse to the app at `http://localhost:9000`.
+Now browse to the app at `http://localhost:9000`
+
+### Run the server 
