@@ -1,0 +1,11 @@
+{
+  "db": {
+    "host": "localhost",
+    "port": 3306,
+    "database": "sampleEvolent",
+    "username": "root",
+    "password": "admin",
+    "name": "db",
+    "connector": "mysql"
+  }
+}

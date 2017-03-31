@@ -1,0 +1,146 @@
+<div class="section-body" ng-controller="MainCtrl" >
+  <h2 class="text-primary">Manage Contacts</h2>
+  <button class="btn btn-success" ng-click="addNewContact()" align="right"><i class="fa fa-plus"></i>Add
+  </button>
+  <!--<th class="text-right">Actions</th>ss="fa fa-plus"></i> Add</button><br><br>-->
+  <!-- START table-responsive-->
+  <div class="jumbotron" ng-show="!addContact && !showEdit">
+    <div class="table-responsive" id="contactList">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email ID</th>
+          <th>Status</th>
+          <th class="text-right">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="data in allContacts">
+          <td>{{data.firstName}}</td>
+          <td>{{data.lastName }}</td>
+          <td>{{data.email}}</td>
+          <td>{{data.status }}</td>
+          <td class="text-right">
+            <button style="color:darkgray" type="button" ng-click="editContact(data)" class="btn btn-icon-toggle"
+                    data-toggle="tooltip" data-placement="top" data-original-title="Edit row"><i
+              class="fa fa-pencil"></i></button>
+            <button style="color:darkgray" type="button" ng-click="deleteContact(data.id)" class="btn btn-icon-toggle"
+                    data-toggle="tooltip" data-placement="top" data-original-title="Delete row"><i
+              class="fa fa-trash-o"></i></button>
+          </td>
+        </tr>
+
+        <tr ng-show="allContacts.length == 0">
+          <td colspan="5">No records</td>
+
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+    <span us-spinner="{radius:30, width:8, length: 16}" spinner-start-active="1" spinner-key="spinner-1"></span>
+  </div>
+
+
+  <div class="col-sm-12" ng-show="addContact">
+    <!-- START panel-->
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form class="form-horizontal" ng-submit="saveContact(MainCtrl.allContacts)">
+
+            <div class="form-group">
+              <label class="col-lg-2 control-label">First Name</label>
+              <div class="col-lg-6">
+                <input type="text" placeholder="First Name" class="form-control"
+                       ng-model="MainCtrl.allContacts.firstName"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label">Last Name</label>
+              <div class="col-lg-6">
+                <input type="text" placeholder="Last Name" class="form-control"
+                       ng-model="MainCtrl.allContacts.lastName"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label">Email</label>
+              <div class="col-lg-6">
+                <input type="email" placeholder="Email" class="form-control" ng-model="MainCtrl.allContacts.email"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label">Status</label>
+              <div class="col-lg-6">
+                <input type="text" placeholder="Status" class="form-control" ng-model="MainCtrl.allContacts.status"/>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <div class="col-lg-offset-4 col-lg-10">
+                <input class="btn btn-success" type="submit" value="ADD"/>
+                <input class="btn btn-danger" type="button" value="Cancel" ng-click="cancel()"/>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- END panel-->
+  </div>
+
+
+  <!--Edit Window-->
+  <div class="col-sm-12" ng-show="showEdit">
+    <!-- START panel-->
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form class="form-horizontal"  ng-submit="saveContact(allContacts)">
+            <div class="form-group">
+              <label class="col-lg-2 control-label">FirstName</label>
+              <div class="col-lg-6">
+                <input type="text" placeholder="First Name" class="form-control"
+                       ng-model="allContacts.firstName" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label">LastName</label>
+              <div class="col-lg-6">
+                <input type="text" placeholder="Last Name" class="form-control"
+                       ng-model="allContacts.lastName" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label">email</label>
+              <div class="col-lg-6">
+                <input type="email" placeholder="Email" class="form-control"
+                       ng-model="allContacts.email" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label">Status</label>
+              <div class="col-lg-6">
+                <input type="text" placeholder="Status" class="form-control"
+                       ng-model="allContacts.status" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-lg-offset-4 col-lg-10">
+                <input class="btn btn-success" type="submit" value="Submit"/>
+                <input class="btn btn-danger" type="button" value="Cancel" ng-click="cancel()"/>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- END panel-->
+  </div>
+
+</div>
